@@ -1,1 +1,20 @@
 <h1>Master Branch</h1>
+
+<input type="text" [(ngModel)]="num">
+<h1>
+    {{num}}
+    <span *ngIf="num%2==0">Even</span>
+    <span *ngIf="num%2==1">Odd</span>
+</h1>
+@if(num%2===0){
+<i>Even</i>
+}
+@else{
+<i>Odd</i>
+}
+<!-- <input type="radio" value="male" [(ngModel)]="gender">:Male
+<input type="radio" value="female" [(ngModel)]="gender">:Female
+
+<img [src]="maleimage" alt="" *ngIf="gender=='male'">
+
+<img [src]="femaleimage" alt="" *ngIf="gender=='female'"> -->
