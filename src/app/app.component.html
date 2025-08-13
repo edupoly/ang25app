@@ -1,1 +1,54 @@
 <h1>Master Branch</h1>
+@for(student of students;track $index;){
+<li>{{student}}</li>
+}
+<hr>
+
+<div class="px-5">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Best Pair</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(hero of employees;track $index){
+            <tr>
+                <td>{{hero.id}}</td>
+                <td>{{hero.firstname}}</td>
+                <td>{{hero.bestpair}}</td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+<ul>
+    <li *ngFor="let std of students">HI {{std}}</li>
+</ul>
+<div class="px-5">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Best Pair</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hero of employees">
+                <td>{{hero.id}}</td>
+                <td>{{hero.firstname}}</td>
+                <td>{{hero.bestpair}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
