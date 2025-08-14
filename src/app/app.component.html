@@ -1,1 +1,33 @@
 <h1>Master Branch</h1>
+<div class="m-5 p-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>age</th>
+                <th>gender</th>
+                <th>city</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(user of allusers;track $index;){
+            <tr>
+                <th>{{user.firstname}}</th>
+                <th>{{user.lastname}}</th>
+                <th>{{user.age}}</th>
+                <th>
+                    @if(user.gender=='Male'){
+                    <img [src]="maleImage" alt="" style="width:100px">
+                    }
+                    @else{
+                    <img [src]="femaleImage" style="width:100px" alt="">
+                    }
+                    {{user.gender}}
+                </th>
+                <th>{{user.city}}</th>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

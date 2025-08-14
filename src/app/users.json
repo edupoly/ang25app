@@ -1,0 +1,73 @@
+{
+    "users":[
+    {
+        "firstname": "John",
+        "lastname": "Doe",
+        "age": 28,
+        "gender": "Male",
+        "city": "New York"
+    },
+    {
+        "firstname": "Jane",
+        "lastname": "Smith",
+        "age": 32,
+        "gender": "Female",
+        "city": "Los Angeles"
+    },
+    {
+        "firstname": "Michael",
+        "lastname": "Johnson",
+        "age": 24,
+        "gender": "Male",
+        "city": "Chicago"
+    },
+    {
+        "firstname": "Emily",
+        "lastname": "Davis",
+        "age": 29,
+        "gender": "Female",
+        "city": "Houston"
+    },
+    {
+        "firstname": "David",
+        "lastname": "Wilson",
+        "age": 35,
+        "gender": "Male",
+        "city": "Phoenix"
+    },
+    {
+        "firstname": "Sarah",
+        "lastname": "Martinez",
+        "age": 27,
+        "gender": "Female",
+        "city": "Philadelphia"
+    },
+    {
+        "firstname": "Chris",
+        "lastname": "Brown",
+        "age": 31,
+        "gender": "Male",
+        "city": "San Antonio"
+    },
+    {
+        "firstname": "Jessica",
+        "lastname": "Garcia",
+        "age": 26,
+        "gender": "Female",
+        "city": "San Diego"
+    },
+    {
+        "firstname": "Matthew",
+        "lastname": "Miller",
+        "age": 30,
+        "gender": "Male",
+        "city": "Dallas"
+    },
+    {
+        "firstname": "Ashley",
+        "lastname": "Rodriguez",
+        "age": 25,
+        "gender": "Female",
+        "city": "San Jose"
+    }
+]}
