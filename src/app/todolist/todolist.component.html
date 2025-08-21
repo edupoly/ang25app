@@ -1,0 +1,10 @@
+<div class="border border-2 p-3 m-3 bg-info border-danger">
+    <h3>Todolist Component</h3>
+    <input type="text" [(ngModel)]="newtodo">
+    <button (click)="addTodo()">Add Todo</button>
+    <ul>
+        @for(todo of todos;track $index;let i=$index){
+        <app-todo [t]="todo" (delEvent)="deleteTodo(i)"></app-todo>
+        }
+    </ul>
+</div>
