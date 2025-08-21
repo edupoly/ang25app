@@ -9,11 +9,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ang25app';
-  a = signal(230);
-  inc34() {
-    // this.a.set(Math.random());
-    this.a.update((ov) => {
-      return ov + 20;
-    });
+  count = signal(0);
+  inc() {
+    // this.count.set(this.count() + 1);
+    this.count.update((cv) => cv + 1);
+  }
+  dec() {
+    this.count.update((cv) => cv - 1);
   }
 }
