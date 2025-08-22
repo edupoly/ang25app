@@ -1,1 +1,20 @@
-<h1>Master Branch</h1>
+<div class="m-5 text-center">
+    <h1>Edupoly Todolist</h1>
+    <input type="text" (keyup)="updateNewTodo($event)">
+    <button class="btn btn-primary btn-sm m-2" (click)="addTodo()">Add Todo</button>
+    <ul class="text-start">
+        @for(todo of todos();track $index){
+        <li class="d-flex justify-content-between m-2 border border-1 p-2">
+            <b>{{todo.text}}</b>
+            <i>{{todo.completed}}</i>
+            <div>
+                <button class="btn btn-danger btn-sm mx-1" (click)="deleteTodo(todo.id)">Delete</button>
+
+                <button [class]="todo.completed?'btn btn-info btn-sm mx-1':'btn btn-warning btn-sm mx-1'"
+                    (click)="toggleTodo(todo.id)">{{todo.completed?"Undo":"Done"}}</button>
+
+            </div>
+        </li>
+        }
+    </ul>
+</div>
