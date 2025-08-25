@@ -1,0 +1,26 @@
+<div class="border border-2" style="width:100vw;height:100vh">
+    <h1>POS</h1>
+    <div class="d-flex">
+        <div class="w-75">
+            <h2>Products</h2>
+            <div class="d-flex flex-wrap gap-2 justify-content-evenly">
+                @for(product of allProducts();track $index){
+
+                <div class="card" style="width: 12rem;">
+                    <img [src]="product.thumbnail" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <h5 class="card-title">{{product.price}}</h5>
+                        <button class="btn btn-primary" (click)="addToCart(product)">Add To Cart</button>
+                    </div>
+                </div>
+
+                }
+            </div>
+
+        </div>
+        <div class="w-25">
+            <app-cart [cartItems]="cartProducts"></app-cart>
+        </div>
+    </div>
+</div>
