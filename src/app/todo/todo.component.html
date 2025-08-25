@@ -1,0 +1,10 @@
+<li class="d-flex justify-content-between m-2 border border-1 p-2">
+
+    <i>{{todo().text}}</i>
+    <div>
+        <button class="btn btn-danger btn-sm mx-1" (click)="del()">Delete</button>
+
+        <button [class]="todo().completed?'btn btn-info btn-sm mx-1':'btn btn-warning btn-sm mx-1'"
+            (click)="tog()">{{todo().completed?"Undo":"Done"}}</button>
+    </div>
+</li>
