@@ -7,8 +7,5 @@ import { Component, input } from '@angular/core';
   styleUrl: './cart.component.css',
 })
 export class CartComponent {
-  cartItems = input();
-  ngOnInit() {
-    console.log(this.cartItems());
-  }
+  cartItems = input<any>();
 }
