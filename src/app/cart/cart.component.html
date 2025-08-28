@@ -1,0 +1,33 @@
+<div class="">
+    <h1 class="bg-light">Cart {{cartItems().length}}</h1>
+    <table class="table table-striped">
+        <!-- <p>{{cartItems()|json}}</p> -->
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of cartItems();track $index){
+            <tr>
+                <td>{{item.title}}</td>
+                <td>
+                    <i class="bi bi-dash-circle-fill fs-4" (click)="decCartItemQuantity(item)"></i>
+                    {{item.quantity}}
+                    <i class="bi bi-plus-circle-fill fs-4" (click)="incCartItemQuantity(item)"></i>
+                </td>
+                <td>{{item.price}}</td>
+                <td>{{item.price*item.quantity}}</td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4" style="text-align:right">Total:{{finalTotal()}}</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
