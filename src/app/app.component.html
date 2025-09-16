@@ -1,1 +1,11 @@
-<h1>Master Branch</h1>
+<div class="border border-2 p-5 m-5 border-danger">
+    <h1>Master Branch</h1>
+    <a [routerLink]="['/']">Home</a>&nbsp;&nbsp;
+    <a [routerLink]="['/aboutus']">Aboutus</a>&nbsp;&nbsp;
+    <a [routerLink]="['/contactus']">Contactus</a>&nbsp;&nbsp;
+    <a [routerLink]="['/services']">Services</a>&nbsp;&nbsp;
+    <a [routerLink]="['/movies']">Movies</a>&nbsp;&nbsp;
+    <div class="border border-2 p-2 m-2 border-primary">
+        <router-outlet></router-outlet>
+    </div>
+</div>
