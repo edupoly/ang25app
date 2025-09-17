@@ -1,0 +1,27 @@
+<div class="border border-2 border-danger p-4 m-4">
+    <p>studentform works!</p>
+    <form [formGroup]="studentForm" (ngSubmit)="show()">
+        <input type="text" formControlName="firstname">
+        @if(studentForm.get('firstname')?.touched){
+        @if(studentForm.get('firstname')?.errors?.['required']){
+        <b>Kaavali</b>
+        }
+        @if(studentForm.get('firstname')?.errors?.['minlength']){
+        <b>min 3</b>
+        }
+        }
+        <br>
+        <input type="text" formControlName="lastname">
+        <br>
+        <input type="text" formControlName="age">
+        <br>
+        <div formArrayName="mobilenumbers">
+            <div *ngFor="let control of $any(studentForm.get('mobilenumbers'))?.controls;let i=index">
+                <input type="text" [formControlName]="i">
+            </div>
+            <button (click)="addMobile()">+mobile</button>
+        </div>
+        <br>
+        <button [disabled]="!studentForm.valid">See</button>
+    </form>
+</div>
