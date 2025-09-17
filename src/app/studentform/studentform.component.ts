@@ -22,24 +22,14 @@ export class StudentformComponent {
       firstname: ['', [Validators.required, Validators.minLength(4)]],
       lastname: [''],
       age: [''],
-      mobilenumbers: this.fb.array([this.fb.control('')]),
+      mobilenumbers: this.fb.array([]),
     });
-    // this.studentForm = new FormGroup({
-    //   firstname: new FormControl('', [
-    //     Validators.required,
-    //     Validators.minLength(3),
-    //   ]),
-    //   lastname: new FormControl(''),
-    //   age: new FormControl(),
-    // });
   }
-  // get mobilenumbers(){
-  //   return this.studentForm.get('mobilenumbers') as FormArray
-  // }
+  get mobilenumbers() {
+    return this.studentForm.get('mobilenumbers') as FormArray;
+  }
   addMobile() {
-    (this.studentForm.get('mobilenumbers') as FormArray).push(
-      this.fb.control('')
-    );
+    this.mobilenumbers.push(this.fb.control(''));
   }
   show() {
     console.log(this.studentForm.controls['firstname']);

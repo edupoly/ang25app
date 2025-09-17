@@ -16,7 +16,7 @@
         <input type="text" formControlName="age">
         <br>
         <div formArrayName="mobilenumbers">
-            <div *ngFor="let control of $any(studentForm.get('mobilenumbers'))?.controls;let i=index">
+            <div *ngFor="let control of mobilenumbers.controls;let i=index">
                 <input type="text" [formControlName]="i">
             </div>
             <button (click)="addMobile()">+mobile</button>
