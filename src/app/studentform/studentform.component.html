@@ -14,6 +14,11 @@
         <input type="text" formControlName="lastname">
         <br>
         <input type="text" formControlName="age">
+        @if(studentForm.get('age')?.touched){
+        @if(studentForm.get('age')?.errors?.['ageError']){
+        <b>{{studentForm.get('age')?.errors?.['ageError']}}</b>
+        }
+        }
         <br>
         <div formArrayName="mobilenumbers">
             <div *ngFor="let control of mobilenumbers.controls;let i=index">

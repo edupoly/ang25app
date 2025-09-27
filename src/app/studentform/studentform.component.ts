@@ -21,8 +21,9 @@ export class StudentformComponent {
     this.studentForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(4)]],
       lastname: [''],
-      age: [''],
-      mobilenumbers: this.fb.array([]),
+      age: ['', [this.checkMinor]],
+      mobilenumbers: this.fb.array(['']),
+      username: ['', [], []],
     });
   }
   get mobilenumbers() {
@@ -35,5 +36,13 @@ export class StudentformComponent {
     console.log(this.studentForm.controls['firstname']);
     console.log(this.studentForm.value);
     console.log(this.studentForm.valid);
+  }
+  checkMinor(fc: FormControl) {
+    console.log('fc', fc.value);
+    if (fc.value < 23) {
+      return { ageError: 'you are still minor' };
+    } else {
+      return null;
+    }
   }
 }
