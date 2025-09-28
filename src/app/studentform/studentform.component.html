@@ -1,0 +1,18 @@
+<div class="border border-2 p-2 m-2">
+    <form [formGroup]="studentForm" (submit)="show()">
+        <input type="text" formControlName="firstname">
+        <br>
+        <input type="text" formControlName="lastname">
+        <br>
+        <input type="text" formControlName="age">
+        <br>
+        <div formArrayName="mobileNumbers">
+            @for(mobileNumber of mobileNumbers.controls;track i;let i=$index){
+            <input type="text" [formControlName]="i">
+            <br>
+            }
+            <button (click)="addMobileNumber()">Add Another Mobile Number</button>
+        </div>
+        <button>Show</button>
+    </form>
+</div>
