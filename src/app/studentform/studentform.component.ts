@@ -23,6 +23,11 @@ export class StudentformComponent {
       ]),
       lastname: this.fb.control([]),
       age: this.fb.control([]),
+      address: this.fb.group({
+        addressLine1: this.fb.control(''),
+        addressLine2: [],
+        city: this.fb.control(''),
+      }),
     });
   }
   show() {

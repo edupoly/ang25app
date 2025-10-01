@@ -14,6 +14,15 @@
         <br>
         <input type="text" formControlName="age" placeholder="Age">
         <br>
+        <b>Address</b>
+        <div class="border border-1 border-secondary p-1 m-1" formGroupName="address">
+            <input type="text" formControlName="addressLine1" placeholder="Address Line 1">
+            <br>
+            <input type="text" formControlName="addressLine2" placeholder="Address Line 2">
+            <br>
+            <input type="text" formControlName="city" placeholder="City">
+            <br>
+        </div>
         <button>Show</button>
     </form>
     <button (click)="loadData()">Load Data</button>
