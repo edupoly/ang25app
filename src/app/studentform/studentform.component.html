@@ -13,6 +13,10 @@
         <input type="text" formControlName="lastname" placeholder="Last Name">
         <br>
         <input type="text" formControlName="age" placeholder="Age">
+        <b *ngIf="studentForm?.get('age')?.touched">
+            <b *ngIf="studentForm?.get('age')?.errors?.['ageError']">Age must be lessthan 25</b>
+            <b *ngIf="studentForm?.get('age')?.errors?.['required']">Age ivvali</b>
+        </b>
         <br>
         <button>Show</button>
     </form>
