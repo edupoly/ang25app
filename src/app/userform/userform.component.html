@@ -1,0 +1,13 @@
+<div class="border border-2 border-success m-3 p-3">
+    <form [formGroup]="userForm" (ngSubmit)="show()">
+        <input type="text" formControlName="username">
+        <br>
+        <div *ngIf="userForm?.get('username')?.touched">
+            <div *ngIf="userForm?.get('username')?.errors?.['userNameTaken']">
+                <b>UserName already taken</b>
+            </div>
+        </div>
+        <br>
+        <button>Show</button>
+    </form>
+</div>
