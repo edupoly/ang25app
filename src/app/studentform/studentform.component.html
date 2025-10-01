@@ -14,7 +14,13 @@
         <br>
         <input type="text" formControlName="age" placeholder="Age">
         <br>
+        <div formArrayName="mobiles">
+            <div *ngFor="let mobile of mobiles.controls;let i =index">
+                <input type="text" [formControlName]="i" placeholder="Mobile">
+            </div>
+        </div>
+        <button (click)="addMobile()">Add Another Mobile</button>
         <button>Show</button>
     </form>
-    <button (click)="loadData()">Load Data</button>
+
 </div>

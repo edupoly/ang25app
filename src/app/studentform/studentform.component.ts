@@ -1,15 +1,16 @@
 import {
+  FormArray,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-studentform',
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, NgFor],
   templateUrl: './studentform.component.html',
   styleUrl: './studentform.component.css',
 })
@@ -23,16 +24,17 @@ export class StudentformComponent {
       ]),
       lastname: this.fb.control([]),
       age: this.fb.control([]),
+      mobiles: this.fb.array([this.fb.control([])]),
     });
+  }
+  get mobiles() {
+    return this.studentForm.get('mobiles') as FormArray;
   }
   show() {
     console.log(this.studentForm);
     console.log(this.studentForm.value);
   }
-  loadData() {
-    this.studentForm.patchValue({
-      firstname: 'ravi',
-      lastname: 'hhais',
-    });
+  addMobile() {
+    this.mobiles.push(this.fb.control([]));
   }
 }
