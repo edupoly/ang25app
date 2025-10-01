@@ -18,6 +18,11 @@
             <b *ngIf="studentForm?.get('age')?.errors?.['required']">Age ivvali</b>
         </b>
         <br>
+        <input type="text" formControlName="username" placeholder="username">
+        <b *ngIf="studentForm?.get('username')?.touched">
+            <b *ngIf="studentForm?.get('username')?.errors?.['userNameTaken']">Ee Username taken</b>
+        </b>
+        <br>
         <button>Show</button>
     </form>
     <button (click)="loadData()">Load Data</button>
