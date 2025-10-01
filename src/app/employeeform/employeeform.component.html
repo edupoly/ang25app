@@ -1,0 +1,31 @@
+<div class="border border-2 p-2 m-2">
+    <h2>Employee Form</h2>
+    <form [formGroup]="employeeForm" (submit)="show()">
+        <br>
+        <input type="text" formControlName="firstname" placeholder="firstname">
+        @if(employeeForm?.get("firstname")?.invalid && employeeForm?.get("firstname")?.touched){
+        <b>Error undi</b>
+        }
+        <br>
+        <input type="text" formControlName="lastname" placeholder="lastname">
+        <br>
+        <label for="">Gender:</label>
+        <input type="radio" formControlName="gender" value="female">:Female
+        <input type="radio" formControlName="gender" value="male">:Male
+        <input type="radio" formControlName="gender" value="other">:Other
+        <br>
+        <input type="text" formControlName="age" placeholder="age">
+        @if(employeeForm?.get("age")?.invalid && employeeForm?.get("age")?.touched){
+        <b *ngIf="employeeForm?.get('age')?.errors?.['notEligible']">Age Saripodu</b>
+        }
+        <br>
+        <div formArrayName="mobiles">
+            @for(mobile of mobiles.controls;track i;let i=$index){
+            <input type="text" [formControlName]="i" placeholder="Enter Mobile number">
+            }
+            <button (click)="addAnotherMobile()">Add Another Mobile</button>
+        </div>
+        <br>
+        <button>Show</button>
+    </form>
+</div>
