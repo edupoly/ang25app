@@ -1,0 +1,20 @@
+<div class="border border-2 border-info p-3 m-3">
+    <h1>Student Form</h1>
+    <form [formGroup]="studentForm" (ngSubmit)="show()">
+        <input type="text" formControlName="firstname" placeholder="First Name">
+        <b *ngIf="studentForm?.get('firstname')?.touched">
+            <b *ngIf="studentForm?.get('firstname')?.errors?.['required']">Please fill</b>
+            <b *ngIf="studentForm?.get('firstname')?.errors?.['minlength']">Min 3 chars undali</b>
+            <!-- @if(studentForm?.get('firstname')?.errors?.['required']){
+            <b>Error Undi</b>
+            } -->
+        </b>
+        <br>
+        <input type="text" formControlName="lastname" placeholder="Last Name">
+        <br>
+        <input type="text" formControlName="age" placeholder="Age">
+        <br>
+        <button>Show</button>
+    </form>
+    <button (click)="loadData()">Load Data</button>
+</div>
