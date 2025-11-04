@@ -7,6 +7,7 @@ import { PoccoredevelopmentComponent } from './poccoredevelopment/poccoredevelop
 import { CorporatetrainingComponent } from './corporatetraining/corporatetraining.component';
 import { MoviesmasterComponent } from './moviesmaster/moviesmaster.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
+import { POSComponent } from './pos/pos.component';
 
 export const routes: Routes = [
   {
@@ -42,5 +43,9 @@ export const routes: Routes = [
   {
     path: 'movieDetails/:id',
     component: MoviedetailsComponent,
+  },
+  {
+    path: 'pos',
+    component: POSComponent,
   },
 ];
