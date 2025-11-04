@@ -1,7 +1,17 @@
 <div class="d-flex">
 
     <div class="w-75 border border-2 p-2 m-2">
-
+        <ul class="d-flex flex-wrap gap-5">
+            @for(item of items;track $index){
+            <li class="d-flex flex-column justify-content-between" style="width:150px">
+                <img [src]="item.thumbnail" class="ratio ratio-1x1re" style="width: 100%;" alt="">
+                <b>{{item.title}}</b>
+                <button class="btn btn-success btn-sm" (click)="addToCart(item)">Add to Cart</button>
+            </li>
+            }
+        </ul>
     </div>
-    <div class="w-25 border border-2 p-2 m-2"></div>
+    <div class="w-25 border border-2 p-2 m-2">
+        <app-cart></app-cart>
+    </div>
 </div>
