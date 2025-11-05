@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EcomService } from '../ecom.service';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -10,13 +9,11 @@ import { AsyncPipe } from '@angular/common';
 })
 export class CartComponent {
   constructor(public ecomService: EcomService) {}
-  cart: any = [];
-  cartLength = 0;
+  cartItems: any = [];
   ngOnInit() {
-    this.ecomService.cart.subscribe((items: any) => {
-      console.log('items::', items);
-      this.cart = items;
-      this.cartLength = items.length;
+    this.ecomService.cartSubject.subscribe((citems: any) => {
+      console.log(citems);
+      this.cartItems = citems;
     });
   }
 }

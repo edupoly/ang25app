@@ -9,17 +9,16 @@ import { CartComponent } from '../cart/cart.component';
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.css',
 })
-export class POSComponent {
+export class PosComponent {
   constructor(public http: HttpClient, public ecomService: EcomService) {}
-  items: any;
+  items: any = [];
   ngOnInit() {
     this.http.get('https://dummyjson.com/products').subscribe((res: any) => {
       console.log(res);
       this.items = res['products'];
-      this.ecomService.cart.next([]);
     });
   }
   addToCart(item: any) {
-    this.ecomService.addToCart(item);
+    this.ecomService.addItemToCart(item);
   }
 }

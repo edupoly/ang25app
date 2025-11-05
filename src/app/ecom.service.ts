@@ -5,11 +5,12 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class EcomService {
-  cart = new Subject();
   cartItems: any = [];
-  addToCart(product: any) {
-    this.cartItems.push(product);
-    this.cart.next(this.cartItems);
-  }
+  cartSubject = new Subject();
   constructor() {}
+  addItemToCart(item: any) {
+    this.cartItems.push(item);
+    console.log(this.cartItems);
+    this.cartSubject.next(this.cartItems);
+  }
 }
