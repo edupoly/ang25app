@@ -8,7 +8,7 @@
         @for(item of cartItems;track $index){
         <li class="d-flex justify-content-between align-items-center border w-100">
             <img [src]="item?.thumbnail" class="ratio ratio-1x1re" style="width: 50px;" alt="">
-            <b>{{item?.title}}</b>
+            <b style="max-width:100px">{{item?.title}}</b>
             <b class="text-start">{{item.price}}/unit</b>
             <div class="d-flex flex-row justify-content-evenly align-items-center mx-2 gap-2">
                 <i [class]="ecomService.getCartCount(item)>1?'bi bi-dash-circle-fill text-danger fs-3':'bi bi-trash3-fill text-danger'"
