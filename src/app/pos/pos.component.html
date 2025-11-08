@@ -1,16 +1,20 @@
-<div class="d-flex">
-    <div class="w-75 border border-2 border-success p-2 m-2">
-        <ul class="d-flex flex-wrap gap-5">
-            @for(item of items;track $index){
-            <li class="d-flex flex-column justify-content-between" style="width:150px">
-                <img [src]="item.thumbnail" class="ratio ratio-1x1re" style="width: 100%;" alt="">
-                <b>{{item.title}}</b>
-                <button class="btn btn-success btn-sm" (click)="addToCart(item)">Add to Cart</button>
-            </li>
-            }
-        </ul>
-    </div>
-    <div class="w-25 border border-2 border-info p-2 m-2">
-        <app-cart></app-cart>
-    </div>
-</div>
+<ul class="d-flex flex-wrap justify-content-evenly gap-5">
+    @for(item of items;track $index){
+    <li class="d-flex flex-column justify-content-between" style="width:150px">
+        <img [src]="item.thumbnail" class="ratio ratio-1x1re" style="width: 100%;" alt="">
+        <b>{{item.title}}</b>
+        @if(ecomService.isItemInCart(item)){
+        <div class="d-flex flex-row justify-content-evenly align-items-center">
+            <i [class]="ecomService.getCartCount(item)>1?'bi bi-dash-circle-fill text-danger fs-3':'bi bi-trash3-fill text-danger'"
+                (click)="ecomService.decCartItemCount(item)"></i>
+            <b>{{ecomService.getCartCount(item)}}</b>
+            <!-- <button (click)="inc(item)">Inc</button> -->
+            <i class="bi bi-plus-circle-fill text-success fs-3" (click)="ecomService.incCartItemCount(item)"></i>
+        </div>
+        }
+        @else{
+        <button class="btn btn-success btn-sm" (click)="addToCart(item)">Add to Cart</button>
+        }
+    </li>
+    }
+</ul>

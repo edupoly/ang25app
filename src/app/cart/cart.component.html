@@ -1,9 +1,28 @@
-<h1>Cart Items:{{cartItems.length}}</h1>
-<ul class="d-flex flex-wrap gap-1">
-    @for(item of cartItems;track $index){
-    <li class="d-flex justify-content-between align-items-center">
-        <img [src]="item?.thumbnail" class="ratio ratio-1x1re" style="width: 100px;" alt="">
-        <b>{{item?.title}}</b>
-    </li>
-    }
-</ul>
+@if(cartItems.length===0){
+<h2 class="text-center">Cart is Empty</h2>
+}
+@else{
+<h2>Cart Items:{{cartItems.length}}</h2>
+<div class="d-flex flex-column justify-content-between">
+    <ul class="d-flex flex-wrap list-unstyled">
+        @for(item of cartItems;track $index){
+        <li class="d-flex justify-content-between align-items-center border w-100">
+            <img [src]="item?.thumbnail" class="ratio ratio-1x1re" style="width: 50px;" alt="">
+            <b>{{item?.title}}</b>
+            <b class="text-start">{{item.price}}/unit</b>
+            <div class="d-flex flex-row justify-content-evenly align-items-center mx-2 gap-2">
+                <i [class]="ecomService.getCartCount(item)>1?'bi bi-dash-circle-fill text-danger fs-3':'bi bi-trash3-fill text-danger'"
+                    (click)="ecomService.decCartItemCount(item)"></i>
+                <b>{{ecomService.getCartCount(item)}}</b>
+                <!-- <button (click)="inc(item)">Inc</button> -->
+                <i class="bi bi-plus-circle-fill text-success fs-3" (click)="ecomService.incCartItemCount(item)"></i>
+            </div>
+        </li>
+        }
+
+    </ul>
+    <div>
+        <h4 class="text-end">Total {{getTotal()|currency}}</h4>
+    </div>
+</div>
+}

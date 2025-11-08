@@ -8,6 +8,7 @@ import { CorporatetrainingComponent } from './corporatetraining/corporatetrainin
 import { MoviesmasterComponent } from './moviesmaster/moviesmaster.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { PosComponent } from './pos/pos.component';
+import { PosmasterComponent } from './posmaster/posmaster.component';
 
 export const routes: Routes = [
   {
@@ -46,6 +47,6 @@ export const routes: Routes = [
   },
   {
     path: 'pos',
-    component: PosComponent,
+    component: PosmasterComponent,
   },
 ];
