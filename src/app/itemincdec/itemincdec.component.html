@@ -1,0 +1,6 @@
+<div class="d-flex align-items-center gap-2 justify-content-center">
+    <i [class]="item().count===1?'bi bi-dash-circle fs-4 text-secondary disabled':'bi bi-dash-circle fs-4 text-danger'"
+        (click)="ecomService.decCartItemCount(item())"></i>
+    <b>{{item().count}}</b>
+    <i class="bi bi-plus-circle fs-4 text-success" (click)="ecomService.incCartItemCount(item())"></i>
+</div>

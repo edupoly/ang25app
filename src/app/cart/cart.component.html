@@ -1,9 +1,12 @@
 <h1>Cart Items:{{cartItems.length}}</h1>
-<ul class="d-flex flex-wrap gap-1">
+<ul class="d-flex flex-wrap gap-1 p-0">
     @for(item of cartItems;track $index){
-    <li class="d-flex justify-content-between align-items-center">
-        <img [src]="item?.thumbnail" class="ratio ratio-1x1re" style="width: 100px;" alt="">
-        <b>{{item?.title}}</b>
+    <li class="d-flex flex-row justify-content-between align-items-center w-100">
+        <img [src]="item?.thumbnail" class="ratio ratio-1x1re" style="width: 50px;" alt="">
+        <b class="w-50">{{item?.title}}</b>
+        <app-itemincdec [item]="item"></app-itemincdec>
+        <button class="btn btn-sm btn-danger m-2" (click)="ecomService.removeCartItem(item)">Remove</button>
     </li>
     }
 </ul>
+<h3>Total:{{ecomService.getCartTotal()|currency}}</h3>

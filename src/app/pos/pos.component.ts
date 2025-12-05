@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EcomService } from '../ecom.service';
 import { CartComponent } from '../cart/cart.component';
+import { ItemincdecComponent } from '../itemincdec/itemincdec.component';
 
 @Component({
   selector: 'app-pos',
-  imports: [CartComponent],
+  imports: [CartComponent, ItemincdecComponent],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.css',
 })
