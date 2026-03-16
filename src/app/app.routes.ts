@@ -7,7 +7,10 @@ import { PoccoredevelopmentComponent } from './poccoredevelopment/poccoredevelop
 import { CorporatetrainingComponent } from './corporatetraining/corporatetraining.component';
 import { MoviesmasterComponent } from './moviesmaster/moviesmaster.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
-
+import { abcGuard } from './guards/abcguard';
+import { confirmGuard } from './guards/confirmGuard';
+import { AboutyouComponent } from './aboutyou/aboutyou.component';
+import { canmatchGuard } from './guards/canmatchGuard';
 export const routes: Routes = [
   {
     path: '',
@@ -16,14 +19,21 @@ export const routes: Routes = [
   {
     path: 'aboutus',
     component: AboutusComponent,
+    canMatch: [canmatchGuard],
+  },
+  {
+    path: 'aboutus',
+    component: AboutyouComponent,
   },
   {
     path: 'contactus',
     component: ContactusComponent,
+    canActivate: [abcGuard],
   },
   {
     path: 'services',
     component: ServicesComponent,
+    canActivateChild: [abcGuard],
     children: [
       {
         path: 'development',
@@ -38,6 +48,7 @@ export const routes: Routes = [
   {
     path: 'movies',
     component: MoviesmasterComponent,
+    canDeactivate: [confirmGuard],
   },
   {
     path: 'movieDetails/:id',
