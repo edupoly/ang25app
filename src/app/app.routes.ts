@@ -8,6 +8,11 @@ import { CorporatetrainingComponent } from './corporatetraining/corporatetrainin
 import { MoviesmasterComponent } from './moviesmaster/moviesmaster.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 
+import { confirmGuard } from './guards/confirmGuard';
+import { abcGuard } from './guards/abcGuard';
+import { matchGuard } from './guards/matchGuard';
+import { AboutyouComponent } from './aboutyou/aboutyou.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -16,14 +21,22 @@ export const routes: Routes = [
   {
     path: 'aboutus',
     component: AboutusComponent,
+    canMatch: [matchGuard],
+    // canActivate: [abcGuard],
+  },
+  {
+    path: 'aboutus',
+    component: AboutyouComponent,
   },
   {
     path: 'contactus',
     component: ContactusComponent,
+    canActivate: [abcGuard],
   },
   {
     path: 'services',
     component: ServicesComponent,
+    canActivateChild: [abcGuard],
     children: [
       {
         path: 'development',
@@ -38,6 +51,7 @@ export const routes: Routes = [
   {
     path: 'movies',
     component: MoviesmasterComponent,
+    canDeactivate: [confirmGuard],
   },
   {
     path: 'movieDetails/:id',
