@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let crop of crops">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">{{crop.subType}} ({{crop.type}})</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Farmer:</strong> {{crop.farmer.name}}</p>
+                    <p class="card-text"><strong>Quantity:</strong> {{crop.remainingQuantity}} / {{crop.totalQuantity}}
+                        units</p>
+                    <p class="card-text"><strong>Duration:</strong> {{crop.startDate | date:'mediumDate'}} -
+                        {{crop.endDate | date:'mediumDate'}}</p>
+                    <hr>
+                    <h6>Location:</h6>
+                    <p class="card-text mb-1">
+                        {{crop.address.area}}, {{crop.address.district}}<br>
+                        {{crop.address.state}} - {{crop.pincode}}
+                    </p>
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        Last Price Update:
+                        <span *ngIf="crop.priceHistory?.length">
+                            {{crop.priceHistory[crop.priceHistory.length - 1].updatedAt | date:'short'}}
+                        </span>
+                    </small>
+                    <a [routerLink]="['/crop', crop._id]" class="btn btn-outline-success btn-sm">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

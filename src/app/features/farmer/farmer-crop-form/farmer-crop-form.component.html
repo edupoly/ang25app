@@ -1,0 +1,58 @@
+<div class="container">
+    <h2>Enter Crop Details</h2>
+    <form [formGroup]="cropForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="type">Crop Type</label>
+            <input id="type" type="text" formControlName="type" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="subType">subType</label>
+            <input id="subType" type="subType" formControlName="subType" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="totalQuantity">totalQuantity</label>
+            <input id="totalQuantity" type="totalQuantity" formControlName="totalQuantity" class="form-control">
+        </div>
+
+        <div formGroupName="address" class="address-group">
+            <h5>Address</h5>
+            <div class="form-group">
+                <label for="area">Area</label>
+                <input id="area" type="text" formControlName="area" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <input id="district" type="text" formControlName="district" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input id="state" type="text" formControlName="state" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input id="pincode" type="text" formControlName="pincode" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="startDate">startDate</label>
+            <input id="startDate" type="date" formControlName="startDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="endDate">endDate</label>
+            <input id="endDate" type="date" formControlName="endDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="price">price</label>
+            <input id="price" type="text" formControlName="currentPrice" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Add Crop
+        </button>
+    </form>
+</div>

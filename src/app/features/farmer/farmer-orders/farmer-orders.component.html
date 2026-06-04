@@ -1,0 +1,66 @@
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Manage Incoming Orders</h3>
+            <span class="badge bg-light text-success">{{orders.length}} Total Orders</span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Crop Details</th>
+                            <th>Buyer Name</th>
+                            <th>Quantity</th>
+                            <th>Total Revenue</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td>
+                                <strong>{{order.crop.type}}</strong><br>
+                                <small class="text-muted">{{order.crop.subType}}</small>
+                            </td>
+                            <td>
+                                {{order.buyer.name}}<br>
+                                <small class="text-muted">{{order.contactNumber}}</small>
+                            </td>
+                            <td>{{order.quantity}} units</td>
+                            <td>{{order.totalAmount | currency:'INR'}}</td>
+                            <td>
+                                <span class="badge" [ngClass]="{
+                                    'bg-warning text-dark': order.status === 'Pending',
+                                    'bg-success': order.status === 'Accepted',
+                                    'bg-danger': order.status === 'Rejected'
+                                }">
+                                    {{order.status}}
+                                </span>
+                            </td>
+                            <td>{{order.createdAt | date:'mediumDate'}}</td>
+                            <td>
+                                <div class="d-flex gap-2" *ngIf="order.status === 'Pending'">
+                                    <!-- <button class="btn btn-sm btn-success"
+                                        (click)="updateStatus(order._id, 'Accepted')">
+                                        Accept
+                                    </button> -->
+                                    <!-- <button class="btn btn-sm btn-danger" (click)="updateStatus(order._id, 'Rejected')">
+                                        Reject
+                                    </button> -->
+                                </div>
+                                <span *ngIf="order.status !== 'Pending'" class="text-muted small">
+                                    Processed
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="orders.length === 0" class="text-center py-4">
+                <p class="text-muted">No orders received yet.</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">My Purchase Interests</h3>
+            <span class="badge bg-light text-primary">{{purchases.length}} Total</span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Crop</th>
+                            <th>Farmer</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of purchases">
+                            <td>
+                                <strong>{{order.crop.type}}</strong><br>
+                                <small class="text-muted">{{order.crop.subType}}</small>
+                            </td>
+                            <td>{{order.farmer.name}}</td>
+                            <td>{{order.quantity}} units</td>
+                            <td>{{order.totalAmount | currency:'INR'}}</td>
+                            <td>
+                                <span class="badge" [ngClass]="{
+                                    'bg-warning text-dark': order.status === 'Pending',
+                                    'bg-success': order.status === 'Accepted',
+                                    'bg-danger': order.status === 'Rejected'
+                                }">
+                                    {{order.status}}
+                                </span>
+                            </td>
+                            <td>{{order.createdAt | date:'mediumDate'}}</td>
+                            <!-- <td>
+                                <button class="btn btn-sm btn-outline-primary" (click)="viewDetails(order)">
+                                    View
+                                </button>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="purchases.length === 0" class="text-center py-4">
+                <p class="text-muted">No purchase interests found.</p>
+            </div>
+        </div>
+    </div>
+</div>

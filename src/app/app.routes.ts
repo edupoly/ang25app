@@ -1,22 +1,35 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { CropsmasterComponent } from './features/crop/cropsmaster/cropsmaster.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
-import { ServicesComponent } from './services/services.component';
-import { PoccoredevelopmentComponent } from './poccoredevelopment/poccoredevelopment.component';
-import { CorporatetrainingComponent } from './corporatetraining/corporatetraining.component';
-import { MoviesmasterComponent } from './moviesmaster/moviesmaster.component';
-import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 
-import { confirmGuard } from './guards/confirmGuard';
-import { abcGuard } from './guards/abcGuard';
-import { matchGuard } from './guards/matchGuard';
-import { AboutyouComponent } from './aboutyou/aboutyou.component';
+import { confirmGuard } from './core/guards/confirmGuard';
+import { abcGuard } from './core/guards/abcGuard';
+import { matchGuard } from './core/guards/matchGuard';
+
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { FarmerDashboardComponent } from './features/farmer/farmer-dashboard/farmer-dashboard.component';
+import { BuyerDashboardComponent } from './features/buyer/buyer-dashboard/buyer-dashboard.component';
+import { FarmerCropFormComponent } from './features/farmer/farmer-crop-form/farmer-crop-form.component';
+import { FarmerCropsComponent } from './features/farmer/farmer-crops/farmer-crops.component';
+import { CropdetailsComponent } from './features/crop/cropdetails/cropdetails.component';
+import { PurchaseorderComponent } from './features/buyer/purchaseorder/purchaseorder.component';
+import { FarmerOrdersComponent } from './features/farmer/farmer-orders/farmer-orders.component';
+import { BuyerPurchasesComponent } from './features/buyer/buyer-purchases/buyer-purchases.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: CropsmasterComponent,
+  },
+  {
+    path: 'crop/:id',
+    component: CropdetailsComponent,
+  },
+  {
+    path: 'purchaseOrder',
+    component: PurchaseorderComponent,
   },
   {
     path: 'aboutus',
@@ -25,36 +38,42 @@ export const routes: Routes = [
     // canActivate: [abcGuard],
   },
   {
-    path: 'aboutus',
-    component: AboutyouComponent,
-  },
-  {
     path: 'contactus',
     component: ContactusComponent,
     canActivate: [abcGuard],
   },
   {
-    path: 'services',
-    component: ServicesComponent,
-    canActivateChild: [abcGuard],
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'farmer',
+    component: FarmerDashboardComponent,
     children: [
       {
-        path: 'development',
-        component: PoccoredevelopmentComponent,
+        path: 'addcrop',
+        component: FarmerCropFormComponent,
       },
       {
-        path: 'trainings',
-        component: CorporatetrainingComponent,
+        path: 'allcrops',
+        component: FarmerCropsComponent,
+      },
+      {
+        path: 'farmer-orders',
+        component: FarmerOrdersComponent,
       },
     ],
   },
   {
-    path: 'movies',
-    component: MoviesmasterComponent,
-    canDeactivate: [confirmGuard],
+    path: 'buyer',
+    component: BuyerDashboardComponent,
   },
   {
-    path: 'movieDetails/:id',
-    component: MoviedetailsComponent,
+    path: 'buyer-purchases',
+    component: BuyerPurchasesComponent,
   },
 ];

@@ -1,0 +1,57 @@
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Purchase Interest Form</h3>
+        </div>
+        <div class="d-flex justify-content-between align-items-top m-3 ">
+            <div>
+                <h4>Crop Details</h4>
+                <div><strong>Type:</strong> {{crop.type}}</div>
+                <div><strong>Sub Type:</strong> {{crop.subType}}</div>
+                <div><strong>Price:</strong> {{crop.priceHistory[0].price | currency:'INR'}}/unit</div>
+
+            </div>
+            <div>
+                <h4>Farmer Details</h4>
+                <div><strong>Name:</strong> {{crop.farmer.name}}</div>
+                <div><strong>Area:</strong> {{crop.farmer.address.area}}</div>
+                <div><strong>State:</strong> {{crop.farmer.address.district}}</div>
+            </div>
+        </div>
+        <h1 class="text-center mt-3">Total:{{purchaseForm.value.quantity*crop.priceHistory[0].price|currency:'INR'}}
+        </h1>
+        <div class="card-body ">
+            <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity Required</label>
+                    <input type="number" id="quantity" class="form-control" formControlName="quantity"
+                        [ngClass]="{'is-invalid': purchaseForm.get('quantity')?.touched && purchaseForm.get('quantity')?.invalid}">
+                    <div class="invalid-feedback">
+                        Please enter a valid quantity.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contactNumber" class="form-label">Contact Number</label>
+                    <input type="text" id="contactNumber" class="form-control" formControlName="contactNumber"
+                        [ngClass]="{'is-invalid': purchaseForm.get('contactNumber')?.touched && purchaseForm.get('contactNumber')?.invalid}">
+                    <div class="invalid-feedback">
+                        Valid contact number is required.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                    <textarea id="notes" class="form-control" formControlName="notes" rows="3"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Cancel</button>
+                    <button type="submit" class="btn btn-success" [disabled]="purchaseForm.invalid">
+                        Submit Interest
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

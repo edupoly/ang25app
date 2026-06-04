@@ -1,0 +1,59 @@
+<div class="container mt-4" *ngIf="crop">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0">{{crop.subType}} - {{crop.type}}</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Crop Information</h4>
+                    <p><strong>Total Quantity:</strong> {{crop.totalQuantity}} units</p>
+                    <p><strong>Remaining Quantity:</strong> {{crop.remainingQuantity}} units</p>
+                    <p><strong>Duration:</strong> {{crop.startDate | date:'longDate'}} to {{crop.endDate |
+                        date:'longDate'}}</p>
+
+                    <hr>
+
+                    <h4>Farmer Details</h4>
+                    <p><strong>Name:</strong> {{crop.farmer.name}}</p>
+                    <p><strong>Farmer Location:</strong>
+                        {{crop.farmer.address.area}}, {{crop.farmer.address.district}}, {{crop.farmer.address.state}}
+                    </p>
+                </div>
+
+                <div class="col-md-6">
+                    <h4>Crop Location</h4>
+                    <p><strong>Area:</strong> {{crop.address.area}}</p>
+                    <p><strong>District:</strong> {{crop.address.district}}</p>
+                    <p><strong>State:</strong> {{crop.address.state}}</p>
+                    <p><strong>Pincode:</strong> {{crop.pincode}}</p>
+
+                    <hr>
+
+                    <h4>Price History</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            *ngFor="let history of crop.priceHistory">
+                            <b>{{history.price|currency:'INR'}}</b>
+                            Updated On:
+                            <span>{{history.updatedAt | date:'medium'}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-secondary" onclick="history.back()">Back</button>
+                <button class="btn btn-primary" *ngIf="crop.remainingQuantity > 0"
+                    (click)="purchaseProduct()">Interested to Buy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!crop" class="text-center mt-5">
+    <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>

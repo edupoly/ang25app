@@ -1,0 +1,66 @@
+<div class="container">
+    <h2>Register</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" type="text" formControlName="name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" formControlName="password" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Role</label>
+            <div class="d-flex flex-row">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="role" id="roleFarmer" value="Farmer">
+                    <label class="form-check-label" for="roleFarmer">Farmer</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="role" id="roleBuyer" value="Buyer">
+                    <label class="form-check-label" for="roleBuyer">Buyer</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="role" id="roleManager"
+                        value="Manager">
+                    <label class="form-check-label" for="roleManager">Manager</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div formGroupName="address" class="address-group">
+            <h5>Address</h5>
+            <div class="form-group">
+                <label for="area">Area</label>
+                <input id="area" type="text" formControlName="area" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <input id="district" type="text" formControlName="district" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input id="state" type="text" formControlName="state" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input id="pincode" type="text" formControlName="pincode" class="form-control">
+        </div>
+
+        <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary">
+            Register
+        </button>
+    </form>
+</div>
