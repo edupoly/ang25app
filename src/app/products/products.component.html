@@ -1,0 +1,8 @@
+<div class="m-5 text-center border border-2 p-2 m-2">
+    <h1>Edupoly Products</h1>
+    <ul>
+        @for(product of products;track $index){
+        <li>{{product.title}}</li>
+        }
+    </ul>
+</div>

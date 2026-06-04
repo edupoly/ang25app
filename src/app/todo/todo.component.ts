@@ -17,4 +17,13 @@ export class TodoComponent {
   tog() {
     this.togTodo.emit();
   }
+  ngOnChanges() {
+    console.log('inside ngOnCHanges ' + this.todo().text + ' loaded');
+  }
+  ngOnInit() {
+    console.log('onInit called');
+  }
+  ngOnDestroy() {
+    console.log(this.todo().text + 'removed');
+  }
 }
